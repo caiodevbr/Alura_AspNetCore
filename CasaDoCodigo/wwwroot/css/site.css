@@ -53,3 +53,8 @@ textarea {
     background-color: #f8965d;
     border-color: white;
 }
+
+.row-center{
+    display:flex;
+    align-items:center;
+}
