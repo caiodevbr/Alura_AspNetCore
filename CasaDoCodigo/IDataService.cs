@@ -8,5 +8,6 @@ namespace CasaDoCodigo
         void InicialzaDB();
 
        List<Produto> GetProdutos();
+        List<ItemPedido> GetItensPedido();
     }
 }

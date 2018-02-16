@@ -6,80 +6,85 @@
 <div id="my-carousel" class="carousel slide" data-ride="carousel">
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        @{ 
+        @{
             const int TAMANHO_PAGINA = 4;
-            int numPaginas = Model.Count()/TAMANHO_PAGINA;
-         }
+            int numPaginas = (int)Math.Ceiling((double)Model.Count() / TAMANHO_PAGINA);
+        }
 
         @for (int pagina = 0; pagina < numPaginas; pagina++)
         {
-        <div class="item @(pagina==0 ? "active":"")">
-            <div class="row">
-                @for (int i = TAMANHO_PAGINA * pagina; i < TAMANHO_PAGINA*(pagina +1); i++)
-                {
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>@(Model[i].Nome)</div>
-                                <div>R$ @(Model[i].Preco)</div>
-                                <div class="text-center">
-                                    <a asp-action="carrinho">Adicionar</a>
+            <div class="item @(pagina==0 ? "active":"")">
+                <div class="row">
+                    @{
+                        var produtosPagina = Model.Skip(TAMANHO_PAGINA * pagina).
+                                   Take(TAMANHO_PAGINA);
+                    }
+
+                    @foreach (var produto in produtosPagina)
+                    {
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img src="~/images/produtos/large_@(produto.Id).jpg" />
+                                </div>
+                                <div class="panel-footer">
+                                    <div>@(produto.Nome)</div>
+                                    <div>R$ @(produto.Preco)</div>
+                                    <div class="text-center">
+                                        <a asp-action="carrinho">Adicionar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
+
             </div>
 
-        </div>
 
 
-
-        @*<div class="item">
-            <div class="row">
-                @for (int i = TAMANHO_PAGINA; i < TAMANHO_PAGINA * 2; i++)
-                {
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>@(Model[i].Nome)</div>
-                                <div>R$ @(Model[i].Preco)</div>
-                                <div class="text-center">
-                                    <a asp-action="carrinho">Adicionar</a>
+            @*<div class="item">
+                    <div class="row">
+                        @for (int i = TAMANHO_PAGINA; i < TAMANHO_PAGINA * 2; i++)
+                        {
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div>@(Model[i].Nome)</div>
+                                        <div>R$ @(Model[i].Preco)</div>
+                                        <div class="text-center">
+                                            <a asp-action="carrinho">Adicionar</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
-                }
-            </div>
-        </div>
-        <div class="item">
-            <div class="row">
-                @for (int i = 8; i < 9; i++)
-                {
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>@(Model[i].Nome)</div>
-                                <div>R$ @(Model[i].Preco)</div>
-                                <div class="text-center">
-                                    <a asp-action="carrinho">Adicionar</a>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        @for (int i = 8; i < 9; i++)
+                        {
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div>@(Model[i].Nome)</div>
+                                        <div>R$ @(Model[i].Preco)</div>
+                                        <div class="text-center">
+                                            <a asp-action="carrinho">Adicionar</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
-                }
-            </div>
-        </div>*@
+                </div>*@
         }
     </div>
     <!-- Controls -->

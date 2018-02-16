@@ -18,6 +18,10 @@ namespace CasaDoCodigo.Models
                 return Quantidade * PrecoUnitario;
             }
         }
+        public ItemPedido()
+        {
+
+        }
 
         public ItemPedido(int id, Produto produto,
             int quantidade):this(produto,quantidade)
