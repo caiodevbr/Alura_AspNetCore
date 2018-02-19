@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Models
 {
+    [Serializable]
+    [DataContract]
     public class Produto
     {
+        [DataMember]
         public int Id { get; private set; }
+        [DataMember]
         public string Nome { get; private set; }
+        [DataMember]
         public decimal Preco { get; private set; }
 
         public Produto()

@@ -1,4 +1,5 @@
 ﻿using CasaDoCodigo.Models;
+using CasaDoCodigo.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,5 +55,21 @@ namespace CasaDoCodigo
             _contexto.SaveChanges();
         }
 
+        public UpdateItemPedidoResponse UpdateItemPedido(ItemPedido itemPedido)
+        {
+            var itemPedidoDB=_contexto.ItensPedido.Where(i => i.Id == itemPedido.Id).SingleOrDefault();
+
+            if(itemPedidoDB!=null)
+            {
+                itemPedidoDB.AtualizaQuantidade(itemPedido.Quantidade);
+                _contexto.SaveChanges();
+            }
+
+            var itensPedidos = _contexto.ItensPedido.ToList();
+            var carrinhoViewModel = new CarrinhoViewModel(itensPedidos);
+
+            return new UpdateItemPedidoResponse(itemPedidoDB, carrinhoViewModel);
+
+        }
     }
 }

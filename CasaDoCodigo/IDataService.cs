@@ -6,8 +6,8 @@ namespace CasaDoCodigo
     public interface IDataService
     {
         void InicialzaDB();
-
-       List<Produto> GetProdutos();
+        List<Produto> GetProdutos();
         List<ItemPedido> GetItensPedido();
+        UpdateItemPedidoResponse UpdateItemPedido(ItemPedido itemPedido);
     }
 }

@@ -25,13 +25,47 @@
     <div class="panel-body">
         @foreach (var item in Model.Itens)
         {
-            <div class="row row-center">
+
+            <div class="row row-center" item-id="@item.Id">
                 <div class="col-md-3">
                     <img src="~/images/produtos/small_@(item.Id).jpg" />
                 </div>
                 <div class="col-md-3">@item.Produto.Nome</div>
                 <div class="col-md-2 text-center">R$ @item.PrecoUnitario</div>
-                <div class="col-md-2 text-center">@item.Quantidade</div>
+                <div class="col-md-2 text-center">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    onclick="carrinho.clickDecremento(this)">
+                                <span class="glyphicon-minus"></span>
+                            </button>
+                        </span>
+                        <input type="text" value="@item.Quantidade"
+                               class="form-control text-center"
+                               onblur="carrinho.updateQuantidade(this)" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    onclick="carrinho.clickIncremento(this)">
+                                <span class="glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    @*<div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" onclick="carrinho.clickDecremento(this)">
+                                    <span class="btn glyphicon-minus"></span>
+                                </button>
+                            </span>
+                            <input class="form-control text-center" type="text"
+                                   onblur="carrinho.updateQuantidade(this)" value="@item.Quantidade" />
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" onclick="carrinho.clickIncremento(this)">
+                                    <span class="btn glyphicon-plus"></span>
+                                </button>
+                            </span>
+                        </div>*@
+                </div>
                 <div class="col-md-2">
                     <span class="pull-right">
                         R$ @item.Subtotal
@@ -43,13 +77,15 @@
     <div class="panel-footer">
         <div class="row">
             <div class="col-md-10">
-                <span>Total: @Model.Itens.Count() 
-                @(Model.Itens.Count() < 2 ? "item" : "itens")</span>
-                
+                <span>
+                    Total: @Model.Itens.Count()
+                    @(Model.Itens.Count() < 2 ? "item" : "itens")
+                </span>
+
             </div>
             <div class="col-md-2">
                 <span class="pull-right">
-                   Total: R$ @Model.Total
+                    Total: R$ @Model.Total
                 </span>
             </div>
         </div>
@@ -70,3 +106,8 @@
             )*@
     </div>
 </div>
+@section Scripts
+    {
+
+    <script src="/js/carrinho.js"></script>
+}

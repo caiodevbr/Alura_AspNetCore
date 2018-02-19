@@ -15,7 +15,7 @@ namespace CasaDoCodigo.Controllers
         {
             _dataService = dataService;
         }
-      
+
 
         public IActionResult Carrossel()
         {
@@ -47,6 +47,12 @@ namespace CasaDoCodigo.Controllers
             CarrinhoViewModel viewModel = GetCarrinhoViewModel();
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public UpdateItemPedidoResponse PostQuantidade([FromBody] ItemPedido input)
+        {
+            return _dataService.UpdateItemPedido(input);
         }
     }
 }
