@@ -55,7 +55,7 @@ namespace CasaDoCodigo
 
             IDataService dataService = serviceProvider.GetService<IDataService>();
 
-            dataService.InicialzaDB();
+            dataService.InicializaDB();
         }
 
         

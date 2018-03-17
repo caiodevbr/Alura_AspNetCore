@@ -5,9 +5,10 @@ namespace CasaDoCodigo
 {
     public interface IDataService
     {
-        void InicialzaDB();
+        void InicializaDB();
         List<Produto> GetProdutos();
         List<ItemPedido> GetItensPedido();
         UpdateItemPedidoResponse UpdateItemPedido(ItemPedido itemPedido);
+        void AddItemPedido(int produtoId);
     }
 }
