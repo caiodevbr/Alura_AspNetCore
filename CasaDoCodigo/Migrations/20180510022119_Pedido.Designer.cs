@@ -11,9 +11,10 @@ using System;
 namespace CasaDoCodigo.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20180510022119_Pedido")]
+    partial class Pedido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,11 +26,11 @@ namespace CasaDoCodigo.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("PedidoId");
+                    b.Property<int?>("PedidoId");
 
                     b.Property<decimal>("PrecoUnitario");
 
-                    b.Property<int>("ProdutoId");
+                    b.Property<int?>("ProdutoId");
 
                     b.Property<int>("Quantidade");
 
@@ -70,13 +71,11 @@ namespace CasaDoCodigo.Migrations
                 {
                     b.HasOne("CasaDoCodigo.Models.Pedido", "Pedido")
                         .WithMany("Itens")
-                        .HasForeignKey("PedidoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PedidoId");
 
                     b.HasOne("CasaDoCodigo.Models.Produto", "Produto")
                         .WithMany()
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProdutoId");
                 });
 #pragma warning restore 612, 618
         }

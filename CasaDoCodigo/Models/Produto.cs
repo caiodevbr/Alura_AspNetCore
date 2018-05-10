@@ -8,10 +8,9 @@ namespace CasaDoCodigo.Models
 {
     [Serializable]
     [DataContract]
-    public class Produto
+    public class Produto:BaseModel
     {
-        [DataMember]
-        public int Id { get; private set; }
+      
         [DataMember]
         public string Nome { get; private set; }
         [DataMember]

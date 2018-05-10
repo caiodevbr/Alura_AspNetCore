@@ -9,3 +9,14 @@ C:\Users\caio_\Desktop\Projetos\CasaDoCodigo\CasaDoCodigo\bin\Debug\netcoreapp2.
 C:\Users\caio_\Desktop\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.dll
 C:\Users\caio_\Desktop\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.pdb
 C:\Users\caio_\Desktop\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.csprojResolveAssemblyReference.cache
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\bin\Debug\netcoreapp2.0\CasaDoCodigo.deps.json
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\bin\Debug\netcoreapp2.0\CasaDoCodigo.runtimeconfig.json
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\bin\Debug\netcoreapp2.0\CasaDoCodigo.runtimeconfig.dev.json
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\bin\Debug\netcoreapp2.0\CasaDoCodigo.dll
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\bin\Debug\netcoreapp2.0\CasaDoCodigo.pdb
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.csproj.CoreCompileInputs.cache
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.AssemblyInfoInputs.cache
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.AssemblyInfo.cs
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.dll
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.pdb
+C:\Users\caio_\Desktop\Caio\Projetos\CasaDoCodigo\CasaDoCodigo\obj\Debug\netcoreapp2.0\CasaDoCodigo.csprojResolveAssemblyReference.cache

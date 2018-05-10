@@ -1,6 +1,6 @@
 ﻿using CasaDoCodigo.Models;
 using CasaDoCodigo.Models.ViewModel;
-
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +11,11 @@ namespace CasaDoCodigo
     public class DataService : IDataService
     {
         private readonly Contexto _contexto;
-        public DataService(Contexto contexto)
+        private readonly IHttpContextAccessor _contextAccessor;
+        public DataService(Contexto contexto, IHttpContextAccessor contextAccessor)
         {
             this._contexto = contexto;
+            this._contextAccessor = contextAccessor;
         }
 
         public void AddItemPedido(int produtoId)
@@ -25,25 +27,60 @@ namespace CasaDoCodigo
 
             if (produto != null)
             {
+                //var pedido=_contexto.Pedidos.FirstOrDefault();
+                int? pedidoId = GetSessionPedidoId();
+
+                Pedido pedido = null;
+                if (pedidoId.HasValue)
+                {
+                     pedido = _contexto.Pedidos.Where(p => p.Id == pedidoId.Value).SingleOrDefault();
+                }
+
+
+                if (pedido == null)
+                    pedido = new Pedido();
+
                 if (!_contexto.ItensPedido
-                    .Where(i => i.Produto.Id == produtoId)
+                    .Where(i =>
+                    i.Pedido.Id == pedido.Id &&
+                    i.Produto.Id == produtoId)
                     .Any())
                 {
                     _contexto.ItensPedido.Add(
-                        new ItemPedido(produto, 1));
+                        new ItemPedido(pedido, produto, 1));
 
                     _contexto.SaveChanges();
+
+                    //salva o id do pedido na sessão
+                    SetSessionPedidoId(pedido);
                 }
             }
         }
 
+        private void SetSessionPedidoId(Pedido pedido)
+        {
+            //salva o id do pedido na sessão
+            _contextAccessor.HttpContext.Session.SetInt32("pedidoId", pedido.Id);
+        }
+
+        private int? GetSessionPedidoId()
+        {
+            var retorno= _contextAccessor.HttpContext.Session.GetInt32("pedidoId");
+            return retorno;
+        }
+
         public List<ItemPedido> GetItensPedido()
         {
-            return this._contexto.ItensPedido.ToList();
+            var pedidoId = GetSessionPedidoId();
+
+            var pedido = _contexto.Pedidos.Where(p => p.Id==pedidoId).Single();
+
+            return this._contexto.ItensPedido.Where(x => x.Pedido.Id == pedido.Id).ToList();
         }
 
         public List<Produto> GetProdutos()
         {
+
             return this._contexto.Produtos.ToList();
         }
 
@@ -70,15 +107,15 @@ namespace CasaDoCodigo
                     this._contexto.Produtos
                         .Add(produto);
 
-                    this._contexto.ItensPedido
-                        .Add(new ItemPedido(produto, 1));
+                    //this._contexto.ItensPedido
+                    //    .Add(new ItemPedido(produto, 1));
                 }
 
                 this._contexto.SaveChanges();
             }
         }
 
-       
+
 
         public UpdateItemPedidoResponse UpdateItemPedido(ItemPedido itemPedido)
         {
